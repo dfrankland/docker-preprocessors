@@ -1,0 +1,91 @@
+{
+  "name": "docker-loader",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint",
+    "build": "rollup -c"
+  },
+  "dependencies": {
+    "dockerode": "^2.5.3",
+    "loader-utils": "^1.1.0",
+    "tar-stream": "^1.5.5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.2",
+    "babel-jest": "^21.2.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.3.2",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "jest": "^21.2.1",
+    "puppeteer": "^0.13.0",
+    "rollup": "^0.51.8",
+    "rollup-plugin-babel": "^3.0.2",
+    "wasm-loader": "^1.1.0",
+    "webpack": "^3.8.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      "stage-0"
+    ],
+    "plugins": [
+      "istanbul"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "env": {
+      "browser": true,
+      "jest/globals": true
+    },
+    "rules": {
+      "react/jsx-filename-extension": "off",
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": [
+            "rollup.config.js",
+            "**/__tests__/**/*"
+          ]
+        }
+      ]
+    },
+    "plugins": [
+      "jest"
+    ]
+  },
+  "jest": {
+    "testRegex": "\\/__tests__\\/(?!__fixtures__).*\\.js$",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "./src/**/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 30,
+        "functions": 30,
+        "lines": 30,
+        "statements": 30
+      }
+    }
+  }
+}
