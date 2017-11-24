@@ -1,16 +1,18 @@
 {
-  "name": "docker-loader",
+  "name": "docker-preprocessors",
   "version": "0.0.1",
-  "main": "./dist/index.js",
   "scripts": {
+    "lerna:bootstrap": "lerna bootstrap -- --no-package-lock",
+    "lerna:clean": "lerna clean --yes",
+    "postinstall": "npm run lerna:bootstrap",
+    "preclean": "npm run lerna:clean",
+    "clean": "rimraf ./packages/*/dist",
+    "postclean": "npm run lerna:bootstrap",
+    "prebuild": "npm run clean",
+    "build": "rollup -c ./rollup.config.js",
+    "pretest": "npm run build",
     "test": "jest",
-    "lint": "eslint",
-    "build": "rollup -c"
-  },
-  "dependencies": {
-    "dockerode": "^2.5.3",
-    "loader-utils": "^1.1.0",
-    "tar-stream": "^1.5.5"
+    "lint": "eslint -c ./package.json --ignore-pattern node_modules ./packages/*/src/"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -26,13 +28,12 @@
     "eslint-plugin-jest": "^21.3.2",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.5.1",
-    "html-webpack-plugin": "^2.30.1",
+    "glob": "^7.1.2",
     "jest": "^21.2.1",
-    "puppeteer": "^0.13.0",
+    "lerna": "^2.5.1",
+    "rimraf": "^2.6.2",
     "rollup": "^0.51.8",
-    "rollup-plugin-babel": "^3.0.2",
-    "wasm-loader": "^1.1.0",
-    "webpack": "^3.8.1"
+    "rollup-plugin-babel": "^3.0.2"
   },
   "babel": {
     "presets": [
@@ -77,7 +78,7 @@
     "testRegex": "\\/__tests__\\/(?!__fixtures__).*\\.js$",
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "./src/**/*.js"
+      "./packages/*/src/**/*.js"
     ],
     "coverageThreshold": {
       "global": {

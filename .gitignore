@@ -58,5 +58,8 @@ typings/
 .env
 
 # build / dist directories
-/build
-/dist
+build
+dist
+
+# package-lock.json incompatible with lerna :(
+/packages/**/package-lock.json

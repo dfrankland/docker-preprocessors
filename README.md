@@ -1,3 +1,4 @@
-# docker-loader
+# docker-preprocessors
 
-Easy way to compile files with Docker.
+A monorepo of bundlers, preprocessors, loaders, and plugins that utilize Docker
+to compile or transpile code.
