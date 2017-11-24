@@ -45,7 +45,7 @@ export default ({
     ),
 
     emittedFiles: await Promise.all((
-      emittedFilePaths.map(async (emittedFilePath) => {
+      (Array.isArray(emittedFilePaths) ? emittedFilePaths : []).map(async (emittedFilePath) => {
         const emittedFile = await getDockerFile({ container, path: emittedFilePath });
         return {
           emittedFilePath,
