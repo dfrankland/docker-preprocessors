@@ -4,6 +4,7 @@
   "scripts": {
     "lerna:bootstrap": "lerna bootstrap -- --no-package-lock",
     "lerna:clean": "lerna clean --yes",
+    "lerna:publish": "lerna publish",
     "postinstall": "npm run lerna:bootstrap",
     "preclean": "npm run lerna:clean",
     "clean": "rimraf ./packages/*/dist ./packages/*/build ./packages/*/package-lock.json",
@@ -12,7 +13,9 @@
     "build": "rollup -c ./rollup.config.js",
     "pretest": "npm run build",
     "test": "jest",
-    "lint": "eslint -c ./package.json --ignore-pattern node_modules ./packages/*/src/"
+    "lint": "eslint -c ./package.json --ignore-pattern node_modules ./packages/*/src/",
+    "prepublish": "npm run test",
+    "publish": "npm run lerna:publish"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
