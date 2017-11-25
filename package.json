@@ -6,7 +6,7 @@
     "lerna:clean": "lerna clean --yes",
     "postinstall": "npm run lerna:bootstrap",
     "preclean": "npm run lerna:clean",
-    "clean": "rimraf ./packages/*/dist",
+    "clean": "rimraf ./packages/*/dist ./packages/*/build ./packages/*/package-lock.json",
     "postclean": "npm run lerna:bootstrap",
     "prebuild": "npm run clean",
     "build": "rollup -c ./rollup.config.js",
