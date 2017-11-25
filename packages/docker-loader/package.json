@@ -1,9 +1,9 @@
 {
   "name": "docker-loader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./dist/index.js",
   "dependencies": {
-    "docker-preprocessor": "^0.0.1",
+    "docker-preprocessor": "^0.0.2",
     "loader-utils": "^1.1.0"
   },
   "devDependencies": {
