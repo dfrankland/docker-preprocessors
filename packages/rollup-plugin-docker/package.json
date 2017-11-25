@@ -1,0 +1,14 @@
+{
+  "name": "rollup-plugin-docker",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "dependencies": {
+    "docker-preprocessor": "0.0.1",
+    "rollup-pluginutils": "^2.0.1"
+  },
+  "devDependencies": {
+    "puppeteer": "^0.13.0",
+    "rollup": "^0.51.8",
+    "rollup-plugin-wasm": "^2.0.1"
+  }
+}

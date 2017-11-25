@@ -44,6 +44,7 @@ export default glob.sync((
       ...Object.keys(dependencies),
       ...Object.keys(devDependencies),
       'path',
+      'fs',
     ],
     plugins: plugins(),
   };
