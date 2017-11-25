@@ -22,11 +22,8 @@ describe('docker-preprocessor', () => {
             " \
               const { readFileSync, writeFileSync } = require('fs'); \
               const content = readFileSync('/host${path}', { encoding: 'utf8' }).split('').reverse().join(''); \
-              console.log('Reversed content:', content);
               writeFileSync('./result', content); \
             " \
-            && \
-            ls -la \
           ;
         `,
       ],
