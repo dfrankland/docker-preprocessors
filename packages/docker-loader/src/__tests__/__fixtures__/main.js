@@ -1,4 +1,4 @@
-const webAssemblyModule = require('./factorial.cpp');
+import webAssemblyModule from './factorial.cpp';
 
 const { Memory, Table } = window.WebAssembly;
 
