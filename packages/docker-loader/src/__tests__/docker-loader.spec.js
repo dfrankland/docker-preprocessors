@@ -2,6 +2,17 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { resolve as resolvePath } from 'path';
 import puppeteer from 'puppeteer';
+import { Duplex } from 'stream';
+
+jest.setTimeout(15000);
+
+// Better logging to console when using Jest
+const streams = new Duplex({
+  write(chunk, encoding, callback) {
+    if (Buffer.isBuffer(chunk)) console.log(chunk.toString('utf8')); // eslint-disable-line no-console
+    callback();
+  },
+});
 
 const webpackConfig = {
   entry: resolvePath(__dirname, './__fixtures__/main.js'),
@@ -28,6 +39,7 @@ const webpackConfig = {
             loader: 'docker-loader',
             options: {
               image: 'apiaryio/emcc',
+              streams,
               createOptions: {
                 Binds: ['/:/host'],
               },
@@ -41,16 +53,63 @@ const webpackConfig = {
                     -Os \
                     -s WASM=1 \
                     -s SIDE_MODULE=1 \
-                    -o target.wasm \
+                    -s ONLY_MY_CODE=1 \
+                    -o targetCpp.wasm \
                   ;
                 `,
               ],
               paths: {
-                main: '/src/target.wasm',
+                main: '/src/targetCpp.wasm',
                 emittedFiles: [
-                  '/src/target.wast',
+                  '/src/targetCpp.wast',
                 ],
-                sourceMap: '/src/target.wasm.map',
+                sourceMap: '/src/targetCpp.wasm.map',
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.rs?$/,
+        use: [
+          {
+            loader: 'wasm-loader',
+          },
+          {
+            loader: 'docker-loader',
+            options: {
+              image: 'rustlang/rust:nightly',
+              streams,
+              createOptions: {
+                Binds: ['/:/host'],
+              },
+              command: path => [
+                'sh',
+                '-c',
+                `
+                  mkdir /src \
+                  && \
+                  cd /src \
+                  && \
+                  rustup target add wasm32-unknown-unknown \
+                  && \
+                  rustc \
+                    --target=wasm32-unknown-unknown \
+                    /host${path} \
+                    -O \
+                    -o targetRust.wasm \
+                  ;
+                `,
+              ],
+              paths: {
+                main: '/src/targetRust.wasm',
+                // `wasm32-unknown-unknown` doesn't output anything, but binary
+                // `wasm` files. If you want to emit other files, or sourcemaps,
+                // `wabt` tools like `wasm2wat` will need to be used.
+                // emittedFiles: [
+                //   '/src/targetRust.wast',
+                // ],
+                // sourceMap: '/src/targetRust.wasm.map',
               },
             },
           },
