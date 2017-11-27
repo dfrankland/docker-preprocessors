@@ -1,16 +1,21 @@
 import { writeFileSync } from 'fs';
 import { dirname, resolve as resolvePath } from 'path';
+import { randomBytes } from 'crypto';
 import { createFilter } from 'rollup-pluginutils';
 import dockerPreprocessor from 'docker-preprocessor';
 
-const PREFIX = '\0docker:';
-const SUFFIX = '.wasm';
+const virtualFile = () => {
+  const PREFIX = `\0docker-${randomBytes(32).toString('hex')}:`;
+  const SUFFIX = '.wasm';
 
-const matchesVirtualFile = id => id.startsWith(PREFIX) && id.endsWith(SUFFIX);
-const createVirtualFileId = id => `${PREFIX}${id}${SUFFIX}`;
-const revertVirtualFileId = id => (
-  id.replace(new RegExp(`^\\${PREFIX}(.*?)\\${SUFFIX}$`), '$1')
-);
+  return {
+    matchesVirtualFile: id => id.startsWith(PREFIX) && id.endsWith(SUFFIX),
+    createVirtualFileId: id => `${PREFIX}${id}${SUFFIX}`,
+    revertVirtualFileId: id => (
+      id.replace(new RegExp(`^\\${PREFIX}(.*?)\\${SUFFIX}$`), '$1')
+    ),
+  };
+};
 
 const ast = {
   type: 'Program',
@@ -26,6 +31,11 @@ export default ({
   options,
 } = {}) => {
   const filter = createFilter(include, exclude);
+  const {
+    matchesVirtualFile,
+    createVirtualFileId,
+    revertVirtualFileId,
+  } = virtualFile();
 
   const plugin = {
     name: 'docker',
