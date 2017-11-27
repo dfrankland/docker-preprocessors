@@ -4,8 +4,8 @@ import getDockerFile from './getDockerFile';
 
 export default ({
   dockerOptions,
-  image = 'apiaryio/emcc',
-  command = path => ['sh', '-c', `"emcc ${path} -s WASM=1"`],
+  image = 'ubuntu',
+  command = () => ['bash'],
   streams = process.stdout,
   createOptions,
   startOptions,

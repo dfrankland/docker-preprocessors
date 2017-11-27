@@ -2,6 +2,25 @@
   "name": "rollup-plugin-docker",
   "version": "0.0.2",
   "main": "./dist/index.js",
+  "description": "A Rollup plugin that wraps docker-preprocessor.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dfrankland/docker-preprocessors.git"
+  },
+  "keywords": [
+    "rollup",
+    "plugin",
+    "docker",
+    "containers",
+    "wasm",
+    "bundler"
+  ],
+  "author": "Dylan Frankland",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dfrankland/docker-preprocessors/issues"
+  },
+  "homepage": "https://github.com/dfrankland/docker-preprocessors/tree/master/packages/rollup-plugin-docker#readme",
   "dependencies": {
     "docker-preprocessor": "^0.0.2",
     "rollup-pluginutils": "^2.0.1"

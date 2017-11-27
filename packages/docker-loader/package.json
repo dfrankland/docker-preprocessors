@@ -2,6 +2,25 @@
   "name": "docker-loader",
   "version": "0.0.2",
   "main": "./dist/index.js",
+  "description": "A Webpack loader that wraps docker-preprocessor.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfrankland/docker-preprocessors.git"
+  },
+  "keywords": [
+    "webpack",
+    "loader",
+    "docker",
+    "container",
+    "wasm",
+    "bundler"
+  ],
+  "author": "Dylan Frankland",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dfrankland/docker-loader/issues"
+  },
+  "homepage": "https://github.com/dfrankland/docker-preprocessors/tree/master/packages/docker-loader#readme",
   "dependencies": {
     "docker-preprocessor": "^0.0.2",
     "loader-utils": "^1.1.0"

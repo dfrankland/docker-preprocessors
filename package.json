@@ -1,6 +1,26 @@
 {
   "name": "docker-preprocessors",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "description": "A monorepo of loaders and plugins that utilize Docker to preprocess resources and assets.",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dfrankland/docker-loader.git"
+  },
+  "keywords": [
+    "webpack",
+    "rollup",
+    "docker",
+    "containers",
+    "wasm",
+    "bundler"
+  ],
+  "author": "Dylan Frankland",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dfrankland/docker-loader/issues"
+  },
+  "homepage": "https://github.com/dfrankland/docker-loader#readme",
   "scripts": {
     "lerna:bootstrap": "lerna bootstrap -- --no-package-lock",
     "lerna:clean": "lerna clean --yes",
@@ -17,6 +37,7 @@
     "prepublish": "npm run test",
     "publish": "npm run lerna:publish"
   },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",

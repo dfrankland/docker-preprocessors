@@ -2,8 +2,27 @@
   "name": "docker-preprocessor",
   "version": "0.0.2",
   "main": "./dist/index.js",
+  "description": "A general-purpose module for preprocessing using [Docker][docker].",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dfrankland/docker-preprocessors.git"
+  },
+  "keywords": [
+    "preprocessor",
+    "docker",
+    "containers",
+    "wasm",
+    "bundler"
+  ],
+  "author": "Dylan Frankland",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dfrankland/docker-preprocessors/issues"
+  },
+  "homepage": "https://github.com/dfrankland/docker-preprocessors/tree/master/packages/docker-loader#readme",
   "dependencies": {
     "dockerode": "^2.5.3",
     "tar-stream": "^1.5.5"
-  }
+  },
+  "devDependencies": {}
 }
