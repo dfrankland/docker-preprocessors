@@ -7,7 +7,7 @@ import { Duplex } from 'stream';
 jest.setTimeout(15000);
 
 // Better logging to console when using Jest
-const streams = new Duplex({
+const consoleLogStream = () => new Duplex({
   write(chunk, encoding, callback) {
     if (Buffer.isBuffer(chunk)) console.log(chunk.toString('utf8')); // eslint-disable-line no-console
     callback();
@@ -39,7 +39,7 @@ const webpackConfig = {
             loader: 'docker-loader',
             options: {
               image: 'apiaryio/emcc',
-              streams,
+              streams: consoleLogStream(),
               createOptions: {
                 Binds: ['/:/host'],
               },
@@ -79,7 +79,7 @@ const webpackConfig = {
             loader: 'docker-loader',
             options: {
               image: 'rustlang/rust:nightly',
-              streams,
+              streams: consoleLogStream(),
               createOptions: {
                 Binds: ['/:/host'],
               },
@@ -129,7 +129,7 @@ const webpackConfig = {
 const compiler = webpack(webpackConfig);
 
 describe('docker-loader', () => {
-  it('compiles C++ to WebAssembly in a Docker container', async () => {
+  it('compiles C++ and Rust to WebAssembly in a Docker container', async () => {
     const bundle = await new Promise((resolve, reject) => {
       compiler.run((err, stats) => {
         console.log(stats.toString()); // eslint-disable-line no-console

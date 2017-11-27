@@ -34,7 +34,7 @@ window.dockerLoaderTest = async (number) => {
 
     if (resultCpp !== resultRust) {
       throw new Error((
-        `C++ facotrial result "${resultCpp}" does not match Rust factorial result "${resultRust}"!`
+        `C++ factorial result "${resultCpp}" does not match Rust factorial result "${resultRust}"!`
       ));
     }
 
