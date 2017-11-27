@@ -1,6 +1,6 @@
 {
   "name": "docker-loader",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./dist/index.js",
   "description": "A Webpack loader that wraps docker-preprocessor.",
   "repository": {
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/dfrankland/docker-preprocessors/tree/master/packages/docker-loader#readme",
   "dependencies": {
-    "docker-preprocessor": "^0.0.2",
+    "docker-preprocessor": "^0.0.3",
     "loader-utils": "^1.1.0"
   },
   "devDependencies": {

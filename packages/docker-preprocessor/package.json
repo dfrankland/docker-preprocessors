@@ -1,6 +1,6 @@
 {
   "name": "docker-preprocessor",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./dist/index.js",
   "description": "A general-purpose module for preprocessing using [Docker][docker].",
   "repository": {
@@ -23,6 +23,5 @@
   "dependencies": {
     "dockerode": "^2.5.3",
     "tar-stream": "^1.5.5"
-  },
-  "devDependencies": {}
+  }
 }

@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-docker",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./dist/index.js",
   "description": "A Rollup plugin that wraps docker-preprocessor.",
   "repository": {
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/dfrankland/docker-preprocessors/tree/master/packages/rollup-plugin-docker#readme",
   "dependencies": {
-    "docker-preprocessor": "^0.0.2",
+    "docker-preprocessor": "^0.0.3",
     "rollup-pluginutils": "^2.0.1"
   },
   "devDependencies": {
