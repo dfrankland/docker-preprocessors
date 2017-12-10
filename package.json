@@ -5,7 +5,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dfrankland/docker-loader.git"
+    "url": "git+https://github.com/dfrankland/docker-preprocessors.git"
   },
   "keywords": [
     "webpack",
@@ -18,9 +18,9 @@
   "author": "Dylan Frankland",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dfrankland/docker-loader/issues"
+    "url": "https://github.com/dfrankland/docker-preprocessors/issues"
   },
-  "homepage": "https://github.com/dfrankland/docker-loader#readme",
+  "homepage": "https://github.com/dfrankland/docker-preprocessors#readme",
   "scripts": {
     "lerna:bootstrap": "lerna bootstrap -- --no-package-lock",
     "lerna:clean": "lerna clean --yes",
