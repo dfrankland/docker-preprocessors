@@ -27,6 +27,6 @@
   },
   "devDependencies": {
     "puppeteer": "^0.13.0",
-    "rollup": "^0.51.8"
+    "rollup": "^0.52.1"
   }
 }
