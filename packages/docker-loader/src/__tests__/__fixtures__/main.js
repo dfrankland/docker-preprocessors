@@ -1,5 +1,5 @@
-import webAssemblyModuleCpp from './factorial.cpp';
-import webAssemblyModuleRust from './factorial.rs';
+import wasmModuleCpp from './factorial.cpp';
+import wasmModuleRust from './factorial.rs';
 
 const { Memory, Table } = window.WebAssembly;
 const deps = () => ({
@@ -19,7 +19,7 @@ window.dockerLoaderTest = async (number) => {
           _factorial: factorialCpp = () => undefined,
         } = {},
       } = {},
-    } = await webAssemblyModuleCpp(deps());
+    } = await wasmModuleCpp(deps());
 
     const {
       instance: {
@@ -27,7 +27,7 @@ window.dockerLoaderTest = async (number) => {
           factorial: factorialRust = () => undefined,
         } = {},
       } = {},
-    } = await webAssemblyModuleRust(deps());
+    } = await wasmModuleRust(deps());
 
     const resultCpp = factorialCpp(number);
     const resultRust = factorialRust(number);

@@ -28,7 +28,7 @@
   "devDependencies": {
     "html-webpack-plugin": "^2.30.1",
     "puppeteer": "^0.13.0",
-    "wasm-loader": "^1.1.0",
+    "wasm-module-loader": "0.0.2",
     "webpack": "^3.8.1"
   }
 }

@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "puppeteer": "^0.13.0",
-    "rollup": "^0.52.1"
+    "rollup": "^0.52.1",
+    "rollup-plugin-wasm-module": "0.0.2"
   }
 }

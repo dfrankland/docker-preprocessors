@@ -1,7 +1,7 @@
-import wasmCpp from './fibonacci.cpp';
-import wasmRust from './fibonacci.rs';
+import wasmModuleCpp from './fibonacci.cpp';
+import wasmModuleRust from './fibonacci.rs';
 
-const { instantiate, Memory, Table } = window.WebAssembly;
+const { Memory, Table } = window.WebAssembly;
 const deps = () => ({
   env: {
     memoryBase: 0,
@@ -14,16 +14,20 @@ const deps = () => ({
 window.dockerLoaderTest = async (number) => {
   try {
     const {
-      exports: {
-        _fibonacci: fibonacciCpp = () => undefined,
+      instance: {
+        exports: {
+          _fibonacci: fibonacciCpp = () => undefined,
+        } = {},
       } = {},
-    } = await instantiate(await wasmCpp, deps());
+    } = await wasmModuleCpp(deps());
 
     const {
-      exports: {
-        fibonacci: fibonacciRust = () => undefined,
+      instance: {
+        exports: {
+          fibonacci: fibonacciRust = () => undefined,
+        } = {},
       } = {},
-    } = await instantiate(await wasmRust, deps());
+    } = await wasmModuleRust(deps());
 
     const resultCpp = fibonacciCpp(number);
     const resultRust = fibonacciRust(number);

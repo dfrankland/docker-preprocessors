@@ -1,4 +1,5 @@
 import { rollup } from 'rollup';
+import wasmModule from 'rollup-plugin-wasm-module';
 import { resolve as resolvePath } from 'path';
 import puppeteer from 'puppeteer';
 import { Duplex } from 'stream';
@@ -86,16 +87,9 @@ const rollupConfig = {
         },
       },
     }),
-    // Not using `rollup-plugin-wasm` here because it causes a `RangeError` due
-    // to a bug.
-    {
-      name: 'wasm',
-      transform: (code, id) => {
-        if (!code || !/\.wasm$/.test(id)) return null;
-        const src = JSON.stringify([...Buffer.from(code, 'binary')]);
-        return `export default WebAssembly.compile(Uint8Array.from(${src}))`;
-      },
-    },
+    wasmModule({
+      include: ['**/*.cpp', '**/*.rs'],
+    }),
   ],
 };
 

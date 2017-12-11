@@ -38,7 +38,7 @@ module.exports = {
         test: /\.cpp?$/,
         use: [
           {
-            loader: 'wasm-loader',
+            loader: 'wasm-module-loader',
           },
           {
             loader: 'docker-loader',

@@ -33,7 +33,7 @@ import wasmModule from 'file.cpp';
 
 ```js
 import docker from 'rollup-plugin-docker';
-import wasm from 'rollup-plugin-wasm';
+import wasmModule from 'rollup-plugin-wasm-module';
 
 export default {
   plugins: [
@@ -67,7 +67,9 @@ export default {
         },
       },
     }),
-    wasm(),
+    wasmModule({
+      include: ['**/*.cpp', '**/*.rs'],
+    }),
   ],
 };
 ```

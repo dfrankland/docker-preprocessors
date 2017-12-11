@@ -24,7 +24,7 @@ const webpackConfig = {
   resolveLoader: {
     alias: {
       'docker-loader': require.resolve('../'),
-      'wasm-loader': require.resolve('wasm-loader'),
+      'wasm-module-loader': require.resolve('wasm-module-loader'),
     },
   },
   module: {
@@ -33,7 +33,7 @@ const webpackConfig = {
         test: /\.cpp?$/,
         use: [
           {
-            loader: 'wasm-loader',
+            loader: 'wasm-module-loader',
           },
           {
             loader: 'docker-loader',
@@ -73,7 +73,7 @@ const webpackConfig = {
         test: /\.rs?$/,
         use: [
           {
-            loader: 'wasm-loader',
+            loader: 'wasm-module-loader',
           },
           {
             loader: 'docker-loader',
