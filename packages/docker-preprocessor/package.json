@@ -2,6 +2,9 @@
   "name": "docker-preprocessor",
   "version": "0.0.3",
   "main": "./dist/index.js",
+  "files": [
+    "dist/index.js"
+  ],
   "description": "A general-purpose module for preprocessing using Docker.",
   "repository": {
     "type": "git",

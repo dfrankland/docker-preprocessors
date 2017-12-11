@@ -2,6 +2,9 @@
   "name": "rollup-plugin-docker",
   "version": "0.0.3",
   "main": "./dist/index.js",
+  "files": [
+    "dist/index.js"
+  ],
   "description": "A Rollup plugin that wraps docker-preprocessor.",
   "repository": {
     "type": "git",

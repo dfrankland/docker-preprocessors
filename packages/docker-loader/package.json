@@ -2,6 +2,9 @@
   "name": "docker-loader",
   "version": "0.0.3",
   "main": "./dist/index.js",
+  "files": [
+    "dist/index.js"
+  ],
   "description": "A Webpack loader that wraps docker-preprocessor.",
   "repository": {
     "type": "git",
